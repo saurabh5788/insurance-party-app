@@ -20,8 +20,8 @@ before_install:
 
 before_script:
   - echo "=====Unit Testing Initiated=====" 
-script:
-  - echo "=====Skipping Unit Tests=====" 
+#script:
+#  - ./mvnw test -B
 
 after_success:
   - echo "=====Build Successful====="

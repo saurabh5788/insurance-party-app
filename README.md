@@ -1,1 +1,1 @@
-# insurance-party-app 
+# Insurance Party App
