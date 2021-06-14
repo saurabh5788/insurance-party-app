@@ -1,0 +1,49 @@
+language: java
+jdk:
+ - openjdk8
+
+branches:
+ only:
+  - main
+ except:
+  - master
+ 
+cache:
+  directories:
+  - $HOME/.m2
+
+before_install:
+  - echo "=====Maven build Initiated====="
+  - chmod +x mvnw
+#install:
+#  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+before_script:
+  - echo "=====Unit Testing Initiated=====" 
+script:
+  - echo "=====Skipping Unit Tests=====" 
+
+after_success:
+  - echo "=====Build Successful====="
+after_failure:
+  - echo "=====Build Failed====="
+  
+before_deploy:
+  - echo "=====Deployment Started====="
+deploy:
+ provider: heroku
+ api_key: $HEROKU_API_KEY
+ app: insurance-party-app
+ on: main
+
+after_deploy:
+  - echo "=====Deployment Completed====="
+after_script:
+  - echo "=====Script Completed====="  
+  
+notifications:
+  email:
+    recipients:
+     - saurabh.singh5788@gmail.com
+    on_success: always # <always|never|change>  default: change
+    on_failure: always # <always|never|change>  default: always
