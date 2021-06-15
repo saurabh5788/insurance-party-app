@@ -24,8 +24,11 @@ public class InsurancePartyApplication implements ApplicationRunner {
 	@Value("${spring.application.instance_id:NO_INSTANCE}")
 	private String applicationInstanceId;
 	
-	@Value("${server.port}")
+	@Value("${server.port:0}")
 	private String serverPort;
+	
+	@Value("${spring.datasource.driverClassName:h2}")
+	private String driverClassName;
 
 	public static void main(String[] args) {
 		SpringApplication.run(InsurancePartyApplication.class, args);
@@ -37,7 +40,7 @@ public class InsurancePartyApplication implements ApplicationRunner {
 		LOGGER.info("Application Name : {}",applicationName);
 		LOGGER.info("Application Instance ID : {}",applicationInstanceId);
 		LOGGER.info("Application Port : {}",serverPort);
-		
+		LOGGER.info("Driver Class : {}",driverClassName);
 	}
 
 }
